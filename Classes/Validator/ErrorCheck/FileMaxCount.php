@@ -73,7 +73,7 @@ class FileMaxCount extends AbstractErrorCheck {
         if (!is_array($info['name'][$this->formFieldName])) {
           $info['name'][$this->formFieldName] = [$info['name'][$this->formFieldName]];
         }
-        if (strlen((string)$info['name'][$this->formFieldName][0]) > 0 && count((array) $info['name'][$this->formFieldName]) + count((array) ($files[$this->formFieldName] ?? [])) > $maxCount) {
+        if (strlen($info['name'][$this->formFieldName][0] ?? '') > 0 && count((array) $info['name'][$this->formFieldName]) + count((array) ($files[$this->formFieldName] ?? [])) > $maxCount) {
           $checkFailed = $this->getCheckFailed();
         }
       }
