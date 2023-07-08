@@ -1263,7 +1263,7 @@ class Form extends AbstractView {
               $maxCount = $fieldSettings['errorCheck.'][$key.'.']['maxCount'];
               $markers['###'.$fieldPathTemp.'_maxCount###'] = $maxCount;
 
-              if (is_array($sessionFiles[$fieldName])) {
+              if (isset($sessionFiles[$fieldName]) && is_array($sessionFiles[$fieldName])) {
                 $fileCount = count($sessionFiles[$fieldName]);
               } else {
                 $fileCount = 0;

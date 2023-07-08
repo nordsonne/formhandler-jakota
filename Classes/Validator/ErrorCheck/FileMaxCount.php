@@ -34,7 +34,7 @@ class FileMaxCount extends AbstractErrorCheck {
     if (!$uploadedFilesWithSameNameAction) {
       $uploadedFilesWithSameNameAction = 'ignore';
     }
-    if (is_array($files[$this->formFieldName])
+    if (isset($files[$this->formFieldName]) && is_array($files[$this->formFieldName])
             && count($files[$this->formFieldName]) >= $maxCount
             && $currentStep === $lastStep
     ) {
@@ -66,7 +66,7 @@ class FileMaxCount extends AbstractErrorCheck {
         }
       }
     } else {
-      if (!is_array($files[$this->formFieldName])) {
+      if (!is_array($files[$this->formFieldName] ?? '')) {
         $files[$this->formFieldName] = [];
       }
       foreach ($_FILES as $idx => $info) {

@@ -53,7 +53,7 @@ class LoadDefaultValues extends AbstractPreProcessor {
    * @param array<string, mixed> $settings
    */
   public function loadDefaultValuesToGP(array $settings): void {
-    $this->setDefaultValues($settings, $this->gp);
+      $this->setDefaultValues($settings, $this->gp);
   }
 
   public function process(mixed &$error = null): array|string {
@@ -62,7 +62,7 @@ class LoadDefaultValues extends AbstractPreProcessor {
       $step = preg_replace('/\.$/', '', $step);
       if (is_numeric($step)) {
         $step = intval($step);
-        if (1 == $step) {
+        if (1 === $step) {
           $this->loadDefaultValuesToGP($stepSettings);
         } else {
           $this->loadDefaultValuesToSession($stepSettings, $step);
