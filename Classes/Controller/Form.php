@@ -7,6 +7,7 @@ namespace Typoheads\Formhandler\Controller;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 use Typoheads\Formhandler\AjaxHandler\AbstractAjaxHandler;
 use Typoheads\Formhandler\Debugger\AbstractDebugger;
 use Typoheads\Formhandler\Finisher\AbstractFinisher;
@@ -182,7 +183,7 @@ class Form extends AbstractController {
         $file = strval($fileOptions['file'] ?? '');
         if (strlen(trim($file)) > 0) {
           $file = $this->utilityFuncs->resolveRelPathFromSiteRoot($file);
-
+          $file = PathUtility::getAbsoluteWebPath($file);
           GeneralUtility::makeInstance(PageRenderer::class)->addCssFile(
             $file,
             boolval($fileOptions['alternate'] ?? false) ? 'alternate stylesheet' : 'stylesheet',
