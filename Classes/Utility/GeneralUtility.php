@@ -597,7 +597,7 @@ class GeneralUtility implements SingletonInterface {
       if (is_object($value)) {
         $value = $value->{$currentKey};
       } elseif (is_array($value)) {
-        $value = $value[$currentKey];
+        $value = $value[$currentKey] ?? '';
       } else {
         $value = '';
 

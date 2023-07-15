@@ -196,7 +196,12 @@ class Form extends AbstractView {
           } elseif (2 === intval($singleFileMarkerTemplate['showThumbnails'] ?? 0)) {
             $markers['###'.$field.'_uploadedFiles###'] .= $wrappedThumbFilename;
           } else {
-            $markers['###'.$field.'_uploadedFiles###'] .= $wrappedFilename;
+              if(isset( $markers['###'.$field.'_uploadedFiles###'] )){
+                  $markers['###'.$field.'_uploadedFiles###'] .= $wrappedFilename;
+              } else {
+                  $markers['###'.$field.'_uploadedFiles###'] = $wrappedFilename;
+              }
+
           }
           if (1 === intval($totalFilesMarkerTemplate['showThumbnails'] ?? 0) || 2 === intval($totalFilesMarkerTemplate['showThumbnails'] ?? 0)) {
             $imgConf['image.'] = (array) ($totalFilesMarkerTemplate['image.'] ?? []);
@@ -216,7 +221,12 @@ class Form extends AbstractView {
           } elseif (2 === intval($totalFilesMarkerTemplate['showThumbnails'] ?? 0)) {
             $markers['###total_uploadedFiles###'] .= $wrappedThumbFilename;
           } else {
-            $markers['###total_uploadedFiles###'] .= $wrappedFilename;
+              if(isset($markers['###total_uploadedFiles###'])){
+                  $markers['###total_uploadedFiles###'] .= $wrappedFilename;
+              }else{
+                  $markers['###total_uploadedFiles###'] = $wrappedFilename;
+              }
+
           }
         }
         $markers['###'.$field.'_uploadedFiles###'] = $this->utilityFuncs->wrap(strval($markers['###'.$field.'_uploadedFiles###'] ?? ''), $singleFileMarkerTemplate, 'totalWrap');

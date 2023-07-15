@@ -306,7 +306,12 @@ class Mail extends AbstractFinisher {
                   $generator->init($this->gp, $options['config.']);
                   $generator->getLink([]);
                   $file = strval($generator->process());
-                  $emailSettings['attachGeneratedFiles'] .= $file.',';
+                  if(isset($emailSettings['attachGeneratedFiles'])){
+                      $emailSettings['attachGeneratedFiles'] .= $file.',';
+                  } else {
+                      $emailSettings['attachGeneratedFiles'] = $file.',';
+
+                  }
                 }
               }
               if (isset($emailSettings['attachGeneratedFiles']) && !empty($emailSettings['attachGeneratedFiles']) && ',' === substr(strval($emailSettings['attachGeneratedFiles']), strlen(strval($emailSettings['attachGeneratedFiles'])) - 1)) {
