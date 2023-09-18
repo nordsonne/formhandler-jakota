@@ -31,7 +31,7 @@ class FileAllowedTypes extends AbstractErrorCheck {
         $files['name'][$this->formFieldName] = [$files['name'][$this->formFieldName]];
       }
       foreach ($files['name'][$this->formFieldName] as $fileName) {
-        if (strlen($fileName) > 0) {
+        if (strlen((string)$fileName) > 0) {
           if ($allowed) {
             $types = GeneralUtility::trimExplode(',', $allowed);
             $fileext = substr($fileName, strrpos($fileName, '.') + 1);
