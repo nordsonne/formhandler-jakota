@@ -34,7 +34,7 @@ class FileMaxSize extends AbstractErrorCheck {
       if (!is_array($files['name'][$this->formFieldName])) {
         $files['name'][$this->formFieldName] = [$files['name'][$this->formFieldName]];
       }
-      if (strlen($files['name'][$this->formFieldName][0]) > 0 && $maxSize) {
+      if (strlen(($files['name'][$this->formFieldName][0] ?? '')) > 0 && $maxSize) {
         if (!is_array($files['size'][$this->formFieldName])) {
           $files['size'][$this->formFieldName] = [$files['size'][$this->formFieldName]];
         }
